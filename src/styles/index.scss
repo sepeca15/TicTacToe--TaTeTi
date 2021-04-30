@@ -1,5 +1,19 @@
 @import "~bootstrap/scss/bootstrap.scss";
 
+*{
+    margin: 0;
+    padding: 0;
+}
+.styleCasillero{
+    font-size: 100px;
+    height: 190px;
+}
+.bg-principal{
+    background-color: rgb(79, 80, 72);
+}
+.textW{
+    color: white;
+}
 /* 
 
     You can write your own styles here...
