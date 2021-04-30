@@ -1,17 +1,34 @@
 import React, { Fragment, useState } from "react";
 
 const Game = () => {
-	const [turnoActual, setTurnoActual] = useState("");
-	const [casilla1, setCasilla1] = useState("");
-	const [casilla2, setCasilla2] = useState("");
-	const [casilla3, setCasilla3] = useState("");
-	const [casilla4, setCasilla4] = useState("");
-	const [casilla5, setCasilla5] = useState("");
-	const [casilla6, setCasilla6] = useState("");
-	const [casilla7, setCasilla7] = useState("");
-	const [casilla8, setCasilla8] = useState("");
-	const [casilla9, setCasilla9] = useState("");
+	const [armaActual, setArmaActual] = useState("");
+	const [tablero, setTablero] = useState([
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		""
+	]);
 	let arrCasillas = [];
+
+	const cambiarArma = () => {
+		if (armaActual === "X") {
+			setArmaActual("O");
+		} else if (armaActual === "O") {
+			setArmaActual("X");
+		}
+	};
+
+	const jugada = posicion => {
+		let tableroAux = [...tablero];
+		tableroAux[posicion] = armaActual;
+		setTablero(tableroAux);
+	};
+
 	return (
 		<div>
 			<div className="container mb-2">
@@ -19,19 +36,19 @@ const Game = () => {
 					Tic Tac Toe in React.js
 				</h1>
 				<h2 className="d-flex justify-content-center my-3 textW b">
-					It is {turnoActual} turno!
+					It is {armaActual} turno!
 				</h2>
 				<div className="d-flex justify-content-center my-3 ">
 					<button className="btn btn-outline-dark bg-light">
 						Start Over
 					</button>
 					<button
-						onClick={() => setTurnoActual("X")}
+						onClick={() => setArmaActual("X")}
 						className="btn btn-outline-dark bg-light">
 						Set X
 					</button>
 					<button
-						onClick={() => setTurnoActual("O")}
+						onClick={() => setArmaActual("O")}
 						className="btn btn-outline-dark bg-light">
 						Set O
 					</button>
@@ -40,88 +57,97 @@ const Game = () => {
 			<div className="container mb-2">
 				<div className="row d-flex justify-content-center">
 					<div
-						onClick={() =>
-							casilla1 == "" ? setCasilla1(turnoActual) : casilla1
-						}
+						onClick={() => {
+							jugada(0);
+							cambiarArma();
+						}}
 						className="col-2 styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
-							{casilla1}
+							{tablero[0]}
 						</p>
 					</div>
 					<div
-						onClick={() =>
-							casilla2 == "" ? setCasilla2(turnoActual) : casilla2
-						}
+						onClick={() => {
+							jugada(1);
+							cambiarArma();
+						}}
 						className="col-2 styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
-							{casilla2}
+							{tablero[1]}
 						</p>
 					</div>
 					<div
-						onClick={() =>
-							casilla3 == "" ? setCasilla3(turnoActual) : casilla3
-						}
+						onClick={() => {
+							jugada(2);
+							cambiarArma();
+						}}
 						className="col-2 styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
-							{casilla3}
-						</p>
-					</div>
-				</div>
-				<div className="row d-flex justify-content-center">
-					<div
-						onClick={() =>
-							casilla4 == "" ? setCasilla4(turnoActual) : casilla4
-						}
-						className="col-2 styleCasillero b border border-secondary">
-						<p className="d-flex justify-content-center align-middle">
-							{casilla4}
-						</p>
-					</div>
-					<div
-						onClick={() =>
-							casilla5 == "" ? setCasilla5(turnoActual) : casilla5
-						}
-						className="col-2 styleCasillero b border border-secondary">
-						<p className="d-flex justify-content-center align-middle">
-							{casilla5}
-						</p>
-					</div>
-					<div
-						onClick={() =>
-							casilla6 == "" ? setCasilla6(turnoActual) : casilla6
-						}
-						className="col-2 styleCasillero b border border-secondary">
-						<p className="d-flex justify-content-center align-middle">
-							{casilla6}
+							{tablero[2]}
 						</p>
 					</div>
 				</div>
 				<div className="row d-flex justify-content-center">
 					<div
-						onClick={() =>
-							casilla7 == "" ? setCasilla7(turnoActual) : casilla7
-						}
+						onClick={() => {
+							jugada(3);
+							cambiarArma();
+						}}
 						className="col-2 styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
-							{casilla7}
+							{tablero[3]}
 						</p>
 					</div>
 					<div
-						onClick={() =>
-							casilla8 == "" ? setCasilla8(turnoActual) : casilla8
-						}
+						onClick={() => {
+							jugada(4);
+							cambiarArma();
+						}}
 						className="col-2 styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
-							{casilla8}
+							{tablero[4]}
 						</p>
 					</div>
 					<div
-						onClick={() =>
-							casilla9 == "" ? setCasilla9(turnoActual) : casilla9
-						}
+						onClick={() => {
+							jugada(5);
+							cambiarArma();
+						}}
 						className="col-2 styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
-							{casilla9}
+							{tablero[5]}
+						</p>
+					</div>
+				</div>
+				<div className="row d-flex justify-content-center">
+					<div
+						onClick={() => {
+							jugada(6);
+							cambiarArma();
+						}}
+						className="col-2 styleCasillero b border border-secondary">
+						<p className="d-flex justify-content-center align-middle">
+							{tablero[6]}
+						</p>
+					</div>
+					<div
+						onClick={() => {
+							jugada(7);
+							cambiarArma();
+						}}
+						className="col-2 styleCasillero b border border-secondary">
+						<p className="d-flex justify-content-center align-middle">
+							{tablero[7]}
+						</p>
+					</div>
+					<div
+						onClick={() => {
+							jugada(8);
+							cambiarArma();
+						}}
+						className="col-2 styleCasillero b border border-secondary">
+						<p className="d-flex justify-content-center align-middle">
+							{tablero[8]}
 						</p>
 					</div>
 				</div>
