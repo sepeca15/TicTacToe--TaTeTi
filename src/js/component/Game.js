@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from "react";
+import PropTypes from "prop-types";
 
-const Game = () => {
-	const [armaActual, setArmaActual] = useState("");
+const Game = props => {
 	const [tablero, setTablero] = useState([
 		"",
 		"",
@@ -13,19 +13,10 @@ const Game = () => {
 		"",
 		""
 	]);
-	let arrCasillas = [];
-
-	const cambiarArma = () => {
-		if (armaActual === "X") {
-			setArmaActual("O");
-		} else if (armaActual === "O") {
-			setArmaActual("X");
-		}
-	};
 
 	const jugada = posicion => {
 		let tableroAux = [...tablero];
-		tableroAux[posicion] = armaActual;
+		tableroAux[posicion] = props.armaActual;
 		setTablero(tableroAux);
 	};
 
@@ -36,13 +27,15 @@ const Game = () => {
 					Tic Tac Toe in React.js
 				</h1>
 				<h2 className="d-flex justify-content-center my-3 textW b">
-					It is {armaActual} turno!
+					It is {props.armaActual} turno!
 				</h2>
 				<div className="d-flex justify-content-center my-3 ">
-					<button className="btn btn-outline-dark bg-light">
+					<button
+						onClick={props.startOver}
+						className="btn btn-outline-dark bg-light">
 						Start Over
 					</button>
-					<button
+					{/* <button
 						onClick={() => setArmaActual("X")}
 						className="btn btn-outline-dark bg-light">
 						Set X
@@ -51,37 +44,35 @@ const Game = () => {
 						onClick={() => setArmaActual("O")}
 						className="btn btn-outline-dark bg-light">
 						Set O
-					</button>
+					</button> */}
 				</div>
 			</div>
 			<div className="container mb-2">
 				<div className="row d-flex justify-content-center">
 					<div
 						onClick={() => {
+							props.cambiarArma;
 							jugada(0);
-							cambiarArma();
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[0]}
 						</p>
 					</div>
 					<div
 						onClick={() => {
-							jugada(1);
-							cambiarArma();
+							jugada(1), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[1]}
 						</p>
 					</div>
 					<div
 						onClick={() => {
-							jugada(2);
-							cambiarArma();
+							jugada(2), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[2]}
 						</p>
@@ -90,30 +81,27 @@ const Game = () => {
 				<div className="row d-flex justify-content-center">
 					<div
 						onClick={() => {
-							jugada(3);
-							cambiarArma();
+							jugada(3), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[3]}
 						</p>
 					</div>
 					<div
 						onClick={() => {
-							jugada(4);
-							cambiarArma();
+							jugada(4), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[4]}
 						</p>
 					</div>
 					<div
 						onClick={() => {
-							jugada(5);
-							cambiarArma();
+							jugada(5), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[5]}
 						</p>
@@ -122,30 +110,27 @@ const Game = () => {
 				<div className="row d-flex justify-content-center">
 					<div
 						onClick={() => {
-							jugada(6);
-							cambiarArma();
+							jugada(6), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[6]}
 						</p>
 					</div>
 					<div
 						onClick={() => {
-							jugada(7);
-							cambiarArma();
+							jugada(7), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[7]}
 						</p>
 					</div>
 					<div
 						onClick={() => {
-							jugada(8);
-							cambiarArma();
+							jugada(8), props.cambiarArma;
 						}}
-						className="col-2 styleCasillero b border border-secondary">
+						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
 							{tablero[8]}
 						</p>
@@ -160,5 +145,12 @@ const Game = () => {
 		</div>
 	);
 };
+
+Game.propTypes = {
+	startOver: PropTypes.func,
+	armaActual: PropTypes.string,
+	cambiarArma: PropTypes.func
+};
+
 //<div></div>
 export default Game;

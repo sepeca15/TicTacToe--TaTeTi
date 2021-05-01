@@ -14,7 +14,7 @@ const Lobby = props => {
 			</div>
 			<div className="container mb-2">
 				<div className="row d-flex justify-content-center">
-					<div>
+					<div className="py-5">
 						<p className="d-flex justify-content-center align-middle textW b">
 							CHOOSE YOUR WEAPON
 						</p>
@@ -22,26 +22,36 @@ const Lobby = props => {
 							<input></input>
 							<input></input>
 						</div>
-						<div className="d-flex justify-content-center align-middle">
-							<button
-								className="styleCasillero m-2"
-								onClick={props.startGame}>
-								X
-							</button>
-							<button
-								className="styleCasillero m-2"
-								onClick={props.startGame}>
-								O
-							</button>
+						<div className="row d-flex justify-content-center">
+							<div
+								onClick={props.startGameInX}
+								className="styleCasilleroLobby b border border-secondary m-3">
+								<p className="d-flex justify-content-center align-middle">
+									X
+								</p>
+							</div>
+							<div
+								onClick={props.startGameInO}
+								className="styleCasilleroLobby b border border-secondary m-3">
+								<p className="d-flex justify-content-center align-middle">
+									O
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
+			</div>
+			<div className="container p-5 mx-auto">
+				<p className="d-flex justify-content-center align-middle">
+					by Sebastian Perez
+				</p>
 			</div>
 		</div>
 	);
 };
 Lobby.propTypes = {
-	startGame: PropTypes.func
+	startGameInX: PropTypes.func,
+	startGameInO: PropTypes.func
 };
 
 export default Lobby;
