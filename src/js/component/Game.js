@@ -17,8 +17,35 @@ const Game = props => {
 	const jugada = posicion => {
 		let tableroAux = [...tablero];
 		tableroAux[posicion] = props.armaActual;
+		let win = calculaGanador(tableroAux);
 		setTablero(tableroAux);
+		setGanador(win);
 	};
+
+	function calculaGanador(tablero) {
+		const lines = [
+			[0, 1, 2],
+			[3, 4, 5],
+			[6, 7, 8],
+			[0, 3, 6],
+			[1, 4, 7],
+			[2, 5, 8],
+			[0, 4, 8],
+			[2, 4, 6]
+		];
+		for (let i = 0; i < lines.length; i++) {
+			const [a, b, c] = lines[i];
+			if (
+				tablero[a] &&
+				tablero[a] === tablero[b] &&
+				tablero[a] === tablero[c]
+			) {
+				return tablero[a];
+			}
+		}
+		return "";
+	}
+	const [ganador, setGanador] = useState("");
 
 	return (
 		<div>
@@ -27,7 +54,7 @@ const Game = props => {
 					Tic Tac Toe in React.js
 				</h1>
 				<h2 className="d-flex justify-content-center my-3 textW b">
-					It is {props.armaActual} turno!
+					It is {props.armaActual} turno! Ganador ? {ganador}
 				</h2>
 				<div className="d-flex justify-content-center my-3 ">
 					<button
@@ -35,24 +62,19 @@ const Game = props => {
 						className="btn btn-outline-dark bg-light">
 						Start Over
 					</button>
-					{/* <button
-						onClick={() => setArmaActual("X")}
-						className="btn btn-outline-dark bg-light">
-						Set X
-					</button>
-					<button
-						onClick={() => setArmaActual("O")}
-						className="btn btn-outline-dark bg-light">
-						Set O
-					</button> */}
 				</div>
 			</div>
 			<div className="container mb-2">
 				<div className="row d-flex justify-content-center">
 					<div
 						onClick={() => {
-							props.cambiarArma;
-							jugada(0);
+							if (ganador === "") {
+								if (tablero[0] == "") {
+									jugada(0);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -61,7 +83,13 @@ const Game = props => {
 					</div>
 					<div
 						onClick={() => {
-							jugada(1), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[1] == "") {
+									jugada(1);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -70,7 +98,13 @@ const Game = props => {
 					</div>
 					<div
 						onClick={() => {
-							jugada(2), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[2] == "") {
+									jugada(2);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -81,7 +115,13 @@ const Game = props => {
 				<div className="row d-flex justify-content-center">
 					<div
 						onClick={() => {
-							jugada(3), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[3] == "") {
+									jugada(3);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -90,7 +130,13 @@ const Game = props => {
 					</div>
 					<div
 						onClick={() => {
-							jugada(4), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[4] == "") {
+									jugada(4);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -99,7 +145,13 @@ const Game = props => {
 					</div>
 					<div
 						onClick={() => {
-							jugada(5), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[5] == "") {
+									jugada(5);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -110,7 +162,13 @@ const Game = props => {
 				<div className="row d-flex justify-content-center">
 					<div
 						onClick={() => {
-							jugada(6), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[6] == "") {
+									jugada(6);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -119,7 +177,13 @@ const Game = props => {
 					</div>
 					<div
 						onClick={() => {
-							jugada(7), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[7] == "") {
+									jugada(7);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
@@ -128,7 +192,13 @@ const Game = props => {
 					</div>
 					<div
 						onClick={() => {
-							jugada(8), props.cambiarArma;
+							if (ganador === "") {
+								if (tablero[8] == "") {
+									jugada(8);
+
+									props.cambiarArma();
+								}
+							}
 						}}
 						className="styleCasillero b border border-secondary">
 						<p className="d-flex justify-content-center align-middle">
