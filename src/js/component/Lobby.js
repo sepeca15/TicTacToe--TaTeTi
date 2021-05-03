@@ -19,8 +19,20 @@ const Lobby = props => {
 							CHOOSE YOUR WEAPON
 						</p>
 						<div>
-							<input></input>
-							<input></input>
+							<input
+								onChange={event =>
+									props.cambiarNombrePlayer1(
+										event.target.value
+									)
+								}
+								placeholder="Player 1"></input>
+							<input
+								onChange={event =>
+									props.cambiarNombrePlayer2(
+										event.target.value
+									)
+								}
+								placeholder="Player 2"></input>
 						</div>
 						<div className="row d-flex justify-content-center">
 							<div
@@ -51,7 +63,9 @@ const Lobby = props => {
 };
 Lobby.propTypes = {
 	startGameInX: PropTypes.func,
-	startGameInO: PropTypes.func
+	startGameInO: PropTypes.func,
+	cambiarNombrePlayer1: PropTypes.func,
+	cambiarNombrePlayer2: PropTypes.func
 };
 
 export default Lobby;

@@ -14,6 +14,18 @@ export function Home() {
 		setArmaActual("O");
 	};
 
+	const [Player1, setPlayer1] = useState("");
+
+	const [Player2, setPlayer2] = useState("");
+
+	const cambiarNombrePlayer1 = nombre => {
+		setPlayer1(nombre);
+	};
+
+	const cambiarNombrePlayer2 = nombre => {
+		setPlayer2(nombre);
+	};
+
 	const startOver = () => {
 		setListoParaJugar(false);
 	};
@@ -35,11 +47,15 @@ export function Home() {
 					startOver={startOver}
 					armaActual={armaActual}
 					cambiarArma={cambiarArma}
+					Player1={Player1}
+					Player2={Player2}
 				/>
 			) : (
 				<Lobby
 					startGameInX={startGameInX}
 					startGameInO={startGameInO}
+					cambiarNombrePlayer1={cambiarNombrePlayer1}
+					cambiarNombrePlayer2={cambiarNombrePlayer2}
 				/>
 			)}
 		</div>

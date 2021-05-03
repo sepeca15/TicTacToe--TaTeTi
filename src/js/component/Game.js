@@ -20,6 +20,7 @@ const Game = props => {
 		let win = calculaGanador(tableroAux);
 		setTablero(tableroAux);
 		setGanador(win);
+		anunciarGanador(win);
 	};
 
 	function calculaGanador(tablero) {
@@ -47,6 +48,14 @@ const Game = props => {
 	}
 	const [ganador, setGanador] = useState("");
 
+	const anunciarGanador = win => {
+		if (win === "X") {
+			alert(props.Player1 + " a ganado");
+		} else if (win === "O") {
+			alert(props.Player2 + " a ganado");
+		}
+	};
+
 	return (
 		<div>
 			<div className="container mb-2">
@@ -54,7 +63,7 @@ const Game = props => {
 					Tic Tac Toe in React.js
 				</h1>
 				<h2 className="d-flex justify-content-center my-3 textW b">
-					It is {props.armaActual} turno! Ganador ? {ganador}
+					It is {props.armaActual} turno!
 				</h2>
 				<div className="d-flex justify-content-center my-3 ">
 					<button
@@ -219,7 +228,9 @@ const Game = props => {
 Game.propTypes = {
 	startOver: PropTypes.func,
 	armaActual: PropTypes.string,
-	cambiarArma: PropTypes.func
+	cambiarArma: PropTypes.func,
+	Player1: PropTypes.string,
+	Player2: PropTypes.string
 };
 
 //<div></div>
